@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gemini AI Orbit - Pre-login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 16px;
+        }
+        button {
+            padding: 12px 20px;
+            margin-top: 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg,#00e6ff,#0072ff);
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Gemini AI Orbit</h1>
+    <p>Are you a Client or a Vendor?</p>
+    <label><input type="radio" name="userType" value="client"> Client</label><br>
+    <label><input type="radio" name="userType" value="vendor"> Vendor</label><br>
+    <button onclick="proceed()">Continue</button>
+</div>
+
+<script>
+function proceed() {
+    const radios = document.getElementsByName("userType");
+    let selected = null;
+    for(const r of radios) {
+        if(r.checked) selected = r.value;
+    }
+    if(!selected) {
+        alert("Please select Client or Vendor");
+        return;
+    }
+    if(selected === "client") {
+        window.location.href = "client.html";
+    } else {
+        window.location.href = "index.html";
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Client Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            color: #fff;
+            padding: 20px;
+        }
+        .card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Client Finance Dashboard</h1>
+
+<div class="card">
+    <h3>Current Time</h3>
+    <p id="time"></p>
+</div>
+
+
+<div class="card">
+    <h3>Finance Info</h3>
+    <ul>
+        <li>Market Index: S&P 500: 4,150</li>
+        <li>Currency Rate: USD/EUR: 0.92</li>
+        <li>Top Stocks: AAPL, MSFT, GOOGL</li>
+    </ul>
+</div>
+
+<script>
+function updateTime() {
+    const now = new Date();
+    document.getElementById("time").innerText = now.toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
+}
+setInterval(updateTime, 1000);
+updateTime();
+
+</script>
+
+</body>
+</html>
