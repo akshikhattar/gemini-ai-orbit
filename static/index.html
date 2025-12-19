@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gemini AI Orbit - Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .login-container {
+            width: 380px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .logo svg {
+            width: 60px;
+            height: 60px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: 2px solid #00e6ff;
+        }
+
+        .error {
+            color: #ff6b6b;
+            font-size: 13px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #00e6ff, #0072ff);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-container">
+    <div class="logo">
+        <!-- Simple AI Orbit Logo -->
+        <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="38" stroke="#00e6ff" stroke-width="4" fill="none"/>
+            <circle cx="50" cy="50" r="20" fill="#00e6ff"/>
+            <circle cx="80" cy="50" r="5" fill="#fff"/>
+        </svg>
+    </div>
+
+    <h1>Gemini AI Orbit</h1>
+
+    <form onsubmit="return validateLogin()">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter username">
+        <div id="usernameError" class="error">
+            Username must contain only letters and max 15 characters.
+        </div>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password">
+        <div id="passwordError" class="error">
+            Password must be at least 12 characters and contain letters & numbers.
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <div class="footer">
+        © 2026 Gemini AI Orbit
+    </div>
+</div>
+
+<script>
+    function validateLogin() {
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        const usernameError = document.getElementById("usernameError");
+        const passwordError = document.getElementById("passwordError");
+
+        usernameError.style.display = "none";
+        passwordError.style.display = "none";
+
+        let isValid = true;
+
+        // Username: only letters, max length 15
+        const usernameRegex = /^[A-Za-z]{1,15}$/;
+        if (!usernameRegex.test(username)) {
+            usernameError.style.display = "block";
+            isValid = false;
+        }
+
+        // Password: min 12 chars, must contain letters and numbers
+        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{12,}$/;
+        if (!passwordRegex.test(password)) {
+            passwordError.style.display = "block";
+            isValid = false;
+        }
+
+        if (isValid) {
+            alert("Login Successful 🚀");
+        }
+
+        return isValid;
+    }
+</script>
+
+</body>
+</html>
